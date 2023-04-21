@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'pro1';
+
+  loadedFeature= 'recipe';
+  onNevigate(data:string){
+    this.loadedFeature=data;
+    
+  }
 }
