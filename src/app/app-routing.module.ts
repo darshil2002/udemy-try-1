@@ -4,6 +4,8 @@ import { RecipesComponent } from './recipes/recipes.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { NoRecipesSelectedComponent } from './recips/no-recipes-selected/no-recipes-selected.component';
 import { RecipeDetailsComponent } from './recipes/recipe-details/recipe-details.component';
+import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
+
 const routes: Routes = 
 [
   { path:'' ,redirectTo:'/recipes',pathMatch:'full'},
@@ -11,25 +13,14 @@ const routes: Routes =
   children:[
     { path:'',component:NoRecipesSelectedComponent},
     // {path:'new',component: },           
+    {path:'app-recipe-details', component:RecipeEditComponent },
+    {path:'new', component:RecipeEditComponent },
     { path:':id', component: RecipeDetailsComponent},
-    //  {path:':number', component: RecipeDetailsComponent}
+    {path:':id/edit', component:RecipeEditComponent },
 ]},
   {path : 'shopping-list', component: ShoppingListComponent}
-
   
 ]
-// {path:'', redirectTo: '/app-recipes', pathMatch: 'full'  }
-//   {path:'', component:RecipesComponent, children:[
-//     {path:'',component:NoRecipesSelectedComponent},
-//     {path:':id',component:RecipeDetailsComponent}
-//   ]},
-//   {path:'app-recipes', component:RecipesComponent,
-//   children:[
-//     {path:'',component:NoRecipesSelectedComponent},
-//     {path:':id',component:RecipeDetailsComponent}
-//   ]},
-//   {path:'app-shopping-edit', component:ShoppingListComponent},
-// ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
