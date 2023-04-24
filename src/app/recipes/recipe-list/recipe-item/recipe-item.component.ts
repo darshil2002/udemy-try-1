@@ -11,11 +11,12 @@ export class RecipeItemComponent {
   @Input() recipe!: Recipe;
   @Input() index!:number;
 
-  constructor (private serv:RecipieServService){}
+  constructor (){}
+  // constructor (private serv:RecipieServService){}
   // @Output() recipeSelected= new EventEmitter <Recipe>();
   onSelected(){
     // this.recipeSelected.emit()
-    this.serv.recipeSelected.emit(this.recipe)
+    // this.serv.recipeSelected.next(this.recipe)
   }
   
 }
