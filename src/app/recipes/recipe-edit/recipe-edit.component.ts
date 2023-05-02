@@ -14,7 +14,7 @@ export class RecipeEditComponent implements OnInit{
 
   id!:number;
   editMode=false;
-  // recipe!:Recipe
+  recipe!:Recipe
   recipeForm!:FormGroup
 
   constructor(private route:ActivatedRoute,private recipeService:RecipieServService){}
@@ -37,7 +37,7 @@ private initForm(){
   let recipeName='';
   let recipeImagePath='';
   let recipeDescription='';
-  // let recipeIngredients=new FormArray([])
+  let recipeIngredients=new FormArray([])
 
   if(this.editMode){
     let recipe=this.recipeService.getRecipeWithDataFromIndex(this.id)
@@ -46,28 +46,28 @@ private initForm(){
     recipeName=recipe.name;
     recipeImagePath=recipe.imagePath;
     recipeDescription=recipe.description;
-    // if(recipe['ingredients']){
-    //   console.log('yes in ingredients',recipe['ingredients'])
-    //   for(let x of recipe.ingredients){
-    //     (<FormArray>this.recipeForm.get('ingredients')).push(
-    //       new FormGroup({
-    //         'name': new FormControl(x.name),
-    //         'amount': new FormControl(x.amount),
-    //       })
-    //     ) 
-    //   }
-    // }
+    if(recipe['ingredients']){
+      console.log('yes in ingredients',recipe['ingredients'])
+      for(let x of recipe.ingredients){
+        (<FormArray><unknown>recipeIngredients).push(
+          new FormGroup({
+            'name': new FormControl(x.name),
+            'amount': new FormControl(x.amount),
+          })
+        ) 
+      }
+    }
   }
   this.recipeForm= new FormGroup({
     'name':new FormControl(recipeName),
     'imagePath':new FormControl(recipeImagePath),
     'description':new FormControl(recipeDescription),
-    // 'ingredients': recipeIngredients
+    'ingredients': recipeIngredients
   })
 }
-// get controls() { 
-//   return (<FormArray>this.recipeForm.get('ingredients')).controls;
-// }
+get controls() { 
+  return (<FormArray>this.recipeForm.get('ingredients')).controls;
+}
   onSubmit(){
     console.log('on submit ',this.recipeForm)
   }
