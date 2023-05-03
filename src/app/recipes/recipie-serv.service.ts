@@ -11,6 +11,8 @@ export class RecipieServService {
   constructor(private shoppingService:ShoppingServiceService) { }
   // @Output() recipeSelected=new Subject<Recipe>()
   // @Output() recipeSelected=new EventEmitter<Recipe>()
+
+    updatedRecipeSubject=new Subject<Recipe[]>()
   
   private recipes: Recipe[] = [
     new Recipe('A Test Recipe', 'This is simply a test', 'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg',
@@ -33,5 +35,13 @@ export class RecipieServService {
   }
   getRecipeWithDataFromIndex(index:number){
     return this.recipes[index]
+  }
+  addRecipe(newRecipe:Recipe){
+    this.recipes.push(newRecipe);
+    this.updatedRecipeSubject.next(this.recipes.slice())
+  }
+  updateRecipe(index:number,editRecipe:Recipe){
+    this.recipes[index]=editRecipe;
+    this.updatedRecipeSubject.next(this.recipes.slice())
   }
 }
