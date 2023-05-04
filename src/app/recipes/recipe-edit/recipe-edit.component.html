@@ -29,7 +29,7 @@
 
         <div class="row">
             <div class="col-xs-12">
-                <img [src]="imagePath.value" class="image-responsive">
+                <img [src]="imagePath.value" style="width: 100px; outline: 1px solid black; padding: 5px;"   class="image-responsive">
             </div>
         </div>
         <div class="row">
@@ -56,7 +56,7 @@
                 </div>
                 
                 <div class="col-xs-2">
-                    <button class="btn btn-danger">X</button>
+                    <button class="btn btn-danger" type="button" (click)="onIngredientDelete(i)">X</button>
                 </div>
                 </div>
                 <hr>

@@ -66,6 +66,7 @@ export class RecipeEditComponent implements OnInit {
       description: new FormControl(recipeDescription, Validators.required),
       ingredients: recipeIngredients,
     });
+  
   }
   addNewIngredient() {
     (<FormArray>(<unknown>this.recipeForm.get('ingredients'))).push(
@@ -82,7 +83,7 @@ export class RecipeEditComponent implements OnInit {
     return (<FormArray>this.recipeForm.get('ingredients')).controls;
   }
   onSubmit() {
-    // console.log('on submit ', this.recipeForm);
+
     if(this.editMode){
       this.recipeService.updateRecipe(this.id,this.recipeForm.value)
     }
@@ -93,5 +94,8 @@ export class RecipeEditComponent implements OnInit {
   }
   onCancle(){
     this.router.navigate(['../'],{relativeTo:this.route })
+  }
+  onIngredientDelete(index:number){
+    (<FormArray>this.recipeForm.get('ingredients')).removeAt(index)
   }
 }
