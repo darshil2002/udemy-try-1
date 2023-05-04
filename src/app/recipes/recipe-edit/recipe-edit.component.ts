@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Route, Router } from '@angular/router';
 import { Ingredient } from 'src/app/Shared/ingredient.model';
 import { RecipieServService } from '../recipie-serv.service';
 import { Recipe } from '../recipe.model';
@@ -18,7 +18,8 @@ export class RecipeEditComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private recipeService: RecipieServService
+    private recipeService: RecipieServService,
+    private router:Router
   ) {}
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
@@ -89,5 +90,9 @@ export class RecipeEditComponent implements OnInit {
     else{
       this.recipeService.addRecipe(this.recipeForm.value)
     }
+    this.onCancle()
+  }
+  onCancle(){
+    this.router.navigate(['../'],{relativeTo:this.route })
   }
 }

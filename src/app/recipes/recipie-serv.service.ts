@@ -9,9 +9,7 @@ import { Subject } from 'rxjs';
 export class RecipieServService {
 
   constructor(private shoppingService:ShoppingServiceService) { }
-  // @Output() recipeSelected=new Subject<Recipe>()
-  // @Output() recipeSelected=new EventEmitter<Recipe>()
-
+  
     updatedRecipeSubject=new Subject<Recipe[]>()
   
   private recipes: Recipe[] = [
@@ -43,5 +41,9 @@ export class RecipieServService {
   updateRecipe(index:number,editRecipe:Recipe){
     this.recipes[index]=editRecipe;
     this.updatedRecipeSubject.next(this.recipes.slice())
+  }
+  deleteRecipeOnIndex(index:number){
+    this.recipes.splice(index,1)
+    this.updatedRecipeSubject.next(this.recipes)
   }
 }
