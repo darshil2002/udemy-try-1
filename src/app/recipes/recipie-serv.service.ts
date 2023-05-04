@@ -13,9 +13,13 @@ export class RecipieServService {
     updatedRecipeSubject=new Subject<Recipe[]>()
   
   private recipes: Recipe[] = [
-    new Recipe('A Test Recipe', 'This is simply a test', 'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg',
+    new Recipe('HotDog', 'This is simply a test', 'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg',
     [new Ingredient('onion',5),
      new Ingredient ('ginger', 4)
+    ]),
+    new Recipe('Vadapav', 'This is simply a test', 'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg',
+    [new Ingredient('Potato',3),
+     new Ingredient ('pav', 4)
     ]),
     new Recipe('another', 'hello bro', 'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg',[
       new Ingredient('water',4),

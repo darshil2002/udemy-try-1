@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-xs-12">
                     <button  class="btn btn-success" type="submit" [disabled]="!recipeForm.valid">Save</button>
-                    <button  class="btn btn-danger mx-2" type="button" (click)="onCancle()">Cancle</button>
+                    <button  class="btn btn-danger mx-2" type="button" (click)="onCancle">Cancle</button>
                 </div>
             </div>
         
@@ -22,14 +22,14 @@
                 <div class="form-group">
                     <label for="imagePath">image URL</label>
                     <input type="text" id="imagePath" class="form-control"
-                    [formControlName]="'imagePath'">
+                    [formControlName]="'imagePath'" #imagePath>
                 </div>
             </div>
         </div>
 
         <div class="row">
             <div class="col-xs-12">
-                <img src="" class="image-responsive">
+                <img [src]="imagePath.value" class="image-responsive">
             </div>
         </div>
         <div class="row">
